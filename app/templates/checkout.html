@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Fooddizone "/>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
+<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+<link href="//fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Yantramanav:100,300,400,500,700,900" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; 
+  display: flex;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; 
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%;
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; 
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.cont {
+  padding: 8px;
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+
+
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+<title>Foodiezone| Checkout :</title>
+</head>
+<body>
+<div class="banner">
+		<div class="header">
+			<div class="w3ls-header">
+				<div class="container">
+					<div class="w3ls-header-left">
+						<p>Free home delivery at your doorstep For Above ₹500</p>
+					</div>
+					<div class="w3ls-header-right">
+						<ul>
+							<li class="head-dpdn">
+								<i class="fa fa-phone" aria-hidden="true"></i>Call us: +91 9211416565
+							</li>
+
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="navigation agiletop-nav">
+				<div class="container">
+					<nav class="navbar navbar-default">
+						<div class="navbar-header w3l_logo">
+							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<h1><a href="index">Fooddizone<span>Best Food Collections</span></a></h1>
+						</div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+</div>
+
+	<div class="about">
+		<div class="container">
+			<h3 class="w3ls-title w3ls-title1">Checkout Here-</h3>
+
+
+<div class="row">
+
+    <div class="col-25">
+    <div class="container">
+        <h3><U>CART</U></h3>
+
+
+
+				<div class ="w3ls-header-right">
+					<p> <b>Welcome {{unm}} !</b></p> &nbsp;
+				</div>
+        <br>
+        <div class="table-responsive">
+					<table class="timetable_sub" width="100%" border="3">
+						<thead>
+							<tr>
+
+								<th>Product Name</th>
+								<th>Quantity</th>
+								<th>Price</th>
+
+								<th></th>
+								<th>Item Looks Like</th>
+							</tr>
+						</thead>
+						<tbody>
+
+
+		  {% for v in vc %}
+
+		  <tr>
+
+			  <td>{{v.prname}}</td>
+			  <td>{{v.qty}}</td>
+			  <td>{{v.price}}</td>
+			  <td><a href="/deletecart/{{ v.sno }}">Remove</a></td>
+			  <td> <img src="../media/{{v.pic}}" height="70" width="70"></td>
+
+		  </tr>
+		  {% endfor %}
+            </tbody>
+	  </table>
+
+      <hr>
+		<p>{{msg}}</p>
+      <p>Total :<span class="price" style="color:black"><b>{{su.price__sum}}</b></span></p>
+    </div>
+  </div>
+
+<br>
+    <br>
+        <br>
+        <br>
+
+
+  <div class="col-75">
+    <div class="cont">
+      <form action="ordersdb" method="post">
+      {% csrf_token %}
+        <div class="row">
+          <div class="col-50">
+			  <h3>Billing Address</h3></br></br>
+            <label for="custid"><i class="fa fa-user"></i> Customer ID</label>
+            <input type="text" id="custid" name="custid" placeholder="Full Name">
+            <label for="addr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="addr" name="addr" placeholder="Address">
+            <label for="phone no"><i class="fa fa-phone-no"></i> Phone no</label>
+            <input type="text" id="phone no" name="phno" placeholder="phone no">
+
+            <div class="row">
+
+              <div class="col-50">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" name="pincode" placeholder="Pincode">
+              </div>
+            </div>
+          </div>
+
+
+          
+        </div>
+
+        <input type="submit" value="PAY" class="btn" >
+      </form>
+    </div>
+  </div>
+</div>
+		</div>
+  <br>
+
+</div>
+
+<br>
+        <br><br><br><br><br><br><br><br>
+	<div class="copyw3-agile">
+		<div class="container">
+			<p>&copy; 2019 Fooddizone . All rights reserved | Design by Jyoti & Shradha </p>
+		</div>
+	</div>
+	<script src="{% static 'js/minicart.js' %}"></script>
+	<script>
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) {
+        		}
+        	}
+        });
+    </script>
+	<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function(₹) {
+				₹(".scroll").click(function(event){
+					event.preventDefault();
+
+			₹('html,body').animate({scrollTop:₹(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<script type="text/javascript">
+		₹(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+			};
+			*/
+
+			₹().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+	</script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+
+
+
+</body>
+</html>

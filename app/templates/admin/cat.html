@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<CENTER>
+    <font size="5" color="Black">
+<h3><U> Category Details</U></h3><br>
+    <h3> <U>Add New Category</U></h3></br>
+<form method="POST" action="/insertcat">
+     {% csrf_token %}
+    <b>Category Name : </b>&nbsp; &nbsp; &nbsp;<input type="text" name="catname"><br>
+    <br>
+&nbsp; &nbsp;<input type="submit" value="Submit">
+    </font>
+
+</form>
+
+
+</br>
+
+<h3> All Categories </h3></br>
+
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>
+
+    </tr>
+    </thead>
+    <tbody>
+{% for e in ca %}
+    <tr>
+        <td>{{ e.catid }}</td>
+        <td>{{ e.catname }}</td>
+
+        <td>
+            <a href="/deletecat/{{ e.catid }}">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+
+
+</CENTER>
+</body>
+</html>

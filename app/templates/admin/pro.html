@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pro</title>
+</head>
+<body bgcolor="#80ff80">
+<center>
+
+    <h1><U> Product Details</U></h1>
+    <h2><U>Add New Product</U></h2></br>
+
+<br>
+<form method="POST" action="/insertpro" enctype="multipart/form-data">
+     {% csrf_token %}
+<!--Product ID :<input type="text" name="prid" ><br>-->
+<font size="5">Product Name &nbsp;&nbsp;<input type="text" name="prname"><br>
+Description &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="descp"><br>
+Quantity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="qty"><br>
+Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="price"><br>
+CategoryID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="catid">
+    {% for c in ca %}
+    <option value="{{c.catid}}">{{c.catname}} </option>
+{% endfor %}
+
+</select><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select a picture &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="file" name="file"><br>
+<input type="submit" value="Submit">
+</font>
+</form>
+
+
+<br>
+
+    <h2> <U>All Products</U></h2><br>
+
+
+<table border="3">
+    <thead>
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Image Path</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for e in pa %}
+    <tr>
+        <td>{{ e.prid }}</td>
+        <td>{{ e.prname }}</td>
+        <td>{{ e.descp }}</td>
+        <td>{{ e.qty }}</td>
+        <td>{{ e.price }}</td>
+        <td>{{e.catid}}</td>
+        <td>{{e.pic}}</td>
+        <td><img src="/media/{{e.pic}}" height="30" width="30"/></td>
+
+        <td>
+            <a href="/deletepro/{{ e.prid }}">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+</center>
+
+
+
+
+
+</body>
+</html>

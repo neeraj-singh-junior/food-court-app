@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<CENTER>
+
+<h3> All Orders </h3></br>
+
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Customer ID</th>
+        <th>Bill Amount</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>PinCode</th>
+        <th> Order Date</th>
+
+    </tr>
+    </thead>
+    <tbody>
+{% for e in od %}
+    <tr>
+        <td>{{ e.ordid }}</td>
+        <td>{{ e.custid }}</td>
+        <td>{{ e.billamt }}</td>
+        <td>{{ e.addr }}</td>
+        <td>{{ e.phno }}</td>
+        <td>{{ e.pincode }}</td>
+        <td>{{ e.ord_date }}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+<a href="exportcsv"> Export to Excel(CSV) </a>
+
+</CENTER>
+</body>
+</html>

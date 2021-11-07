@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+<title>Fooddizone| Products :</title>
+<style>
+      select {
+         width: 100%;
+         padding: 10px 15px;
+         border: 1px tomato;
+         border-radius: 4px;
+         background-color: tomato;
+          	 }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Fooddizone" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="{% static 'css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
+<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css" media="all"/>
+<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+
+<link href="//fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet"> 
+<link href="//fonts.googleapis.com/css?family=Yantramanav:100,300,400,500,700,900" rel="stylesheet">
+
+</head>
+<body> 
+
+	<div class="banner about-w3bnr">
+
+		<div class="header">
+			<div class="w3ls-header">
+				<div class="container">
+					<div class="w3ls-header-left">
+						<p>Free home delivery at your doorstep For Above  ₹500</p>
+					</div>
+					<div class="w3ls-header-right">
+						<ul> 
+							<li class="head-dpdn">
+								<i class="fa fa-phone" aria-hidden="true"></i> Call us:+91 9211416565
+							</li> 
+							<li class="head-dpdn">
+								<a href="loginrd"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+							</li> 
+							<li class="head-dpdn">
+								<a href="signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a>
+							</li> 
+
+						</ul>
+					</div>
+					<div class="clearfix"> </div> 
+				</div>
+			</div>
+
+			<div class="navigation agiletop-nav">
+				<div class="container">
+					<nav class="navbar navbar-default">
+
+						<div class="navbar-header w3l_logo">
+							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>  
+							<h1><a href="index">Fooddizone<span>Best Food Collection</span></a></h1>
+						</div> 
+						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+							<ul class="nav navbar-nav navbar-right">
+
+								<li>
+									<form action="products" method="post">
+                                        {% csrf_token %}
+         							<select name = "catid" onchange="this.form.submit()">
+										<option value = ''><b>........MENU</b></option>
+										{% for e in ca %}
+											<option value ="{{e.catid}}">{{e.catname}}</option>
+         								{% endfor %}
+
+      								</select>
+      								</form>
+								</li>
+
+
+								<li><a href="about">About</a></li>
+
+								<li><a href="contact">Contact Us</a></li>
+								<li><a href="checkout">Cart</a></li>
+							</ul>
+						</div>
+
+					</nav>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+		<div class="banner-text">	
+			<div class="container">
+				<h2>Delicious food from the <br> <span>Best Chefs For you.</span></h2> 
+			</div>
+		</div>
+	</div>
+
+	<div class="container">	
+		<ol class="breadcrumb w3l-crumbs">
+			<li><a href="#"><i class="fa fa-home"></i> Home</a></li> 
+			<li class="active">Dishes</li>
+		</ol>
+	</div>
+
+{% for p in pic %}
+
+				<div class="products-row">
+                    <div class="col-xs-6 col-sm-4 product-grids">
+						<div class="flip-container">
+							<div class="flipper agile-products">
+								<div class="front">
+                                    <img src="../media/{{p.pic}}" height="170" width="170">
+									<div class="agile-product-text">
+										<h5>{{p.prname}}</h5>
+									</div>
+								</div>
+								<div class="back">
+									<h4>{{p.prname}}</h4>
+									<p>{{p.descp}}</p>
+									<h6>{{p.price}}<sup>Rs.</sup></h6>
+									<form action="checkout" method="post">
+                                        {% csrf_token %}
+										<input type="hidden" name="prname" value="{{p.prname}}">
+										<input type="hidden" name="qty" value="1">
+										<input type="hidden" name="price" value="{{p.price}}">
+										<input type="hidden" name="pic" value="{{p.pic}}">
+										<button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+										<span class="w3-agile-line"> </span>
+										<a href="#" data-toggle="modal" data-target="#myModal1">More</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+{% endfor %}
+
+				</div>
+                    <div class="clearfix"> </div>
+
+
+
+
+
+
+
+			<!--<div class="col-md-3 rsidebar">
+				<div class="rsidebar-top">
+
+					<div class="sidebar-row">
+						<h4>Food Collection</h4>
+						<ul class="faq">
+							<li class="item1"><a href="#">Menu<span class="glyphicon glyphicon-menu-down"></span></a>
+								<ul>
+									<li class="subitem1"><a href="#">Breakfast</a></li>
+
+
+								</ul>
+
+						<div class="clearfix"> </div>
+
+						<script type="text/javascript">
+							₹(function() {
+
+								var menu_ul = ₹('.faq > li > ul'),
+									   menu_a  = ₹('.faq > li > a');
+
+								menu_ul.hide();
+
+								menu_a.click(function(e) {
+									e.preventDefault();
+									if(!₹(this).hasClass('active')) {
+										menu_a.removeClass('active');
+										menu_ul.filter(':visible').slideUp('normal');
+										₹(this).addClass('active').next().stop(true,true).slideDown('normal');
+									} else {
+										₹(this).removeClass('active');
+										₹(this).next().stop(true,true).slideUp('normal');
+									}
+								});
+
+							});
+						</script>
+
+							</div>
+
+
+				</div>
+
+
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>-->
+
+	<div class="copyw3-agile"> 
+		<div class="container">
+			<p>&copy; 2019 Fooddizone. All rights reserved | Design by Jyoti & Shradha </p>
+		</div>
+	</div>
+
+	<script src="{% static 'js/minicart.js' %}"></script>
+	<script>
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) { 
+        		}
+        	}
+        });
+    </script>  
+
+	<script src="{% static 'js/owl.carousel.js' %}"></script>
+	<script>
+		₹(document).ready(function() {
+			₹("#owl-demo").owlCarousel ({
+				items : 3,
+				lazyLoad : true,
+				autoPlay : true,
+				pagination : true,
+			});
+		});
+	</script>
+	<script type="text/javascript" src="{% static 'js/jquery.jscrollpane.min.js' %}"></script>
+	<script type="text/javascript" id="sourcecode">
+		₹(function()
+		{
+			₹('.scroll-pane').jScrollPane();
+		});
+	</script>
+
+	<script type="text/javascript" src="{% static 'js/jquery.mousewheel.js' %}"></script>
+	<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function(₹) {
+				₹(".scroll").click(function(event){
+					event.preventDefault();
+			
+			₹('html,body').animate({scrollTop:₹(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+
+	<script type="text/javascript">
+		₹(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			₹().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+	</div>
+</body>
+</html>

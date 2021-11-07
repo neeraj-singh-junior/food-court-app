@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+<title>Fooddizone| Contact Us ::</title>
+<style>
+      select {
+         width: 100%;
+         padding: 10px 15px;
+         border: 1px dashed blue;
+         border-radius: 4px;
+         background-color: orange;
+      }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Foodizone" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
+<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+
+<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+
+<link href="//fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet"> 
+<link href="//fonts.googleapis.com/css?family=Yantramanav:100,300,400,500,700,900" rel="stylesheet">
+
+</head>
+<body> 
+
+	<div class="banner about-w3bnr">
+
+		<div class="header">
+			<div class="w3ls-header">
+				<div class="container">
+					<div class="w3ls-header-left">
+						<p>Free home delivery at your doorstep For Above ₹500</p>
+					</div>
+					<div class="w3ls-header-right">
+						<ul> 
+							<li class="head-dpdn">
+								<i class="fa fa-phone" aria-hidden="true"></i> Call us: +91 9211416565
+							</li> 
+							<li class="head-dpdn">
+								<a href="loginrd"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+							</li> 
+							<li class="head-dpdn">
+								<a href="signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a>
+							</li> 
+
+						</ul>
+					</div>
+					<div class="clearfix"> </div> 
+				</div>
+			</div>
+
+			<div class="navigation agiletop-nav">
+				<div class="container">
+					<nav class="navbar navbar-default">
+
+						<div class="navbar-header w3l_logo">
+							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>  
+							<h1><a href="index">Fooddizone<span>Best Food Collection</span></a></h1>
+						</div> 
+						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="index">Home</a></li>
+
+								<li>
+									<form action="products" method="post">
+										{% csrf_token %}
+         							<select name = "catid" onchange="this.form.submit()">
+										<option value = '0'><b>........MENU</b></option>
+										{% for e in ca %}
+											<option value ="{{e.catid}}">{{e.catname}}</option>
+         								{% endfor %}
+
+      								</select>
+      								</form>
+								</li>
+
+								<li><a href="about">About</a></li>
+
+								<li><a href="contact" class="active">Contact Us</a></li>
+							</ul>
+						</div>
+
+					</nav>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="banner-text">
+			<div class="container">
+				<h2>Delicious food from the <br> <span>Best Chefs For you.</span></h2> 
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<ol class="breadcrumb w3l-crumbs">
+			<li><a href="index"><i class="fa fa-home"></i> Home</a></li>
+			<li class="active">Contact Us</li>
+		</ol>
+	</div>
+	<div id="contact" class="contact cd-section">
+		<div class="container">
+			<h3 class="w3ls-title">Contact us</h3>
+			<p class="w3lsorder-text"> </p>
+			<div class="contact-row agileits-w3layouts">  
+				<div class="col-xs-6 col-sm-6 contact-w3lsleft">
+					<div class="contact-grid agileits">
+						<h4>DROP US A LINE </h4>
+						<form action="contactrec" method="post">
+							{% csrf_token %}
+							<input type="text" name="uname" placeholder="Name" required="">
+
+							<input type="email" name="email" placeholder="Email" required="">
+							<input type="text" name="phno" placeholder="Phone Number" required="">
+							<textarea name="msg" placeholder="Message..." required=""></textarea>
+							<input type="submit" value="Submit" >
+						</form> 
+					</div>
+				</div>
+				<div class="col-xs-6 col-sm-6 contact-w3lsright">
+					<h6><span>Great Food Experience</span><p> Fooddizone accepts orders via its websites.
+					It connects customers with restaurants that offer food delivery
+					in their area and lets them choose, order and pay online.
+					</p></h6>
+					<div class="address-row">
+						<div class="col-xs-2 address-left">
+							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+						</div>
+						<div class="col-xs-10 address-right">
+							<h5>Visit Us</h5>
+							<p>Rithala,Delhi-110089</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="address-row w3-agileits">
+						<div class="col-xs-2 address-left">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</div>
+						<div class="col-xs-10 address-right">
+							<h5>Mail Us</h5>
+							<p><a href="mailto:info@Fooddizone.com"> mail@Fooddizone.com</a></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="address-row">
+						<div class="col-xs-2 address-left">
+							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+						</div>
+						<div class="col-xs-10 address-right">
+							<h5>Call Us</h5>
+							<p>+91 9211416565</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>  
+				</div>
+				<div class="clearfix"> </div>
+			</div>	
+		</div>	
+
+		<div class="map agileits">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448181.163741622!2d76.81306442366602!3d28.64727993557044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi!5e0!3m2!1sen!2sin!4v1554889609753!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
+	</div>
+
+	<div class="copyw3-agile"> 
+		<div class="container">
+			<p>&copy; 2019 Fooddizone. All rights reserved | Design by Jyoti & Shradha </p>
+		</div>
+	</div>
+
+	<script src="{% static 'js/minicart.js' %}"></script>
+	<script>
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) { 
+        		}
+        	}
+        });
+    </script>
+	<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function(₹) {
+				₹(".scroll").click(function(event){
+					event.preventDefault();
+			
+			₹('html,body').animate({scrollTop:₹(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<script type="text/javascript">
+		₹(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			₹().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

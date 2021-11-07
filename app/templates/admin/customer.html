@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Table</title>
+</head>
+<body>
+
+
+<h1> Customer Details</h1><br>
+
+<h3> Add New Customer</h3></br>
+
+<br>
+<br><br>
+<form method="POST" action="/insertcustomer">
+     {% csrf_token %}
+    User-Name : <input type="text" name="uname"><br>
+   <!-- User-Id. :<input type="text" name="cid"><br>-->
+    Phone-No :<input type="text" name="phno" ><br>
+    Pincode : <input type="text" name="pincode"><br>
+    Email :<input type="text" name="email"><br>
+    Password :<input type="text" name="pwd" ><br>
+    Address : <input type="text" name="addr"><br>
+
+
+
+<input type="submit" value="Submit">
+</form>
+
+
+</br>
+</br>
+</br>
+<h3> All Customer</h3></br></br>
+
+
+<table border="1">
+    <thead>
+    <tr>
+
+        <th>User-Name</th>
+        <th>User-Id</th>
+        <th>Phone-No</th>
+        <th>Pincode</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for e in us %}
+    <tr>
+        <td>{{ e.uname }}</td>
+        <td>{{ e.cid }}</td>
+        <td>{{e.phno}}</td>
+        <td>{{e.pincode}}</td>
+        <td>{{e.email}}</td>
+        <td>{{ e.pwd }}</td>
+        <td>{{e.addr}}</td>
+        <td>
+            <a href="/deletecustomer/{{ e.cid }}">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+</body>
+</html>
